@@ -1,0 +1,12 @@
+{
+  "name": "rbessarab/328/dating",
+  "authors": [
+    {
+      "name": "Ruslan Bessarab",
+      "email": "rbessarab@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}

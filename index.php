@@ -1,6 +1,9 @@
 <?php
-
-//this is my controller file
+/*
+ * Ruslan Bessarab
+ * 01.28.2021
+ * Renders home.html template
+ */
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -17,5 +20,4 @@ $f3->route('GET /', function () {
     echo $view->render('views/home.html');
 });
 
-//run fat free (need to be the last)
 $f3->run();

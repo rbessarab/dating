@@ -26,4 +26,14 @@ $f3->route('GET /personal_info', function () {
     echo $view->render('views/personal_info.html');
 });
 
+$f3->route('POST /profile', function () {
+    $view = new Template();
+    echo $view->render('views/profile.html');
+});
+
+$f3->route('POST /interests', function () {
+    $view = new Template();
+    echo $view->render('views/interests.html');
+});
+
 $f3->run();

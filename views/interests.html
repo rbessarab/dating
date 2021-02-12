@@ -17,9 +17,139 @@ profile page that gather interests
     <title>Dating</title>
 </head>
 <body>
-<!--Navbar-->
-<nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-        <a href="{{ @BASE }}" class="navbar-brand">My Dating Website</a>
+    <!--Navbar-->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="{{ @BASE }}" class="navbar-brand">My Dating Website</a>
+        </div>
+    </nav>
+    <div class="container rounded main">
+        <form class="row" method="post" action="summary">
+            <!--Header-->
+            <div class="container">
+                <h4 class="display-4">Interests</h4>
+                <hr>
+            </div>
+            <!--In-door interests-->
+            <div class="container">
+                <h5 class="display-5">In-door Interests</h5>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="form-check">
+                                <input class="form-check-input" name="interests[]" type="checkbox" value="tv" id="tv">
+                                <label class="form-check-label" for="tv">
+                                    tv
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="interests[]" type="checkbox" value="puzzles" id="puzzles">
+                                <label class="form-check-label" for="puzzles">
+                                    puzzles
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-check">
+                                <input class="form-check-input" name="interests[]" type="checkbox" value="movies" id="movies">
+                                <label class="form-check-label" for="movies">
+                                    movies
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="interests[]" type="checkbox" value="reading" id="reading">
+                                <label class="form-check-label" for="reading">
+                                    reading
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-check">
+                                <input class="form-check-input" name="interests[]" type="checkbox" value="cooking" id="cooking">
+                                <label class="form-check-label" for="cooking">
+                                    cooking
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="interests[]" type="checkbox" value="cards" id="cards">
+                                <label class="form-check-label" for="cards">
+                                    playing cards
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-check">
+                                <input class="form-check-input" name="interests[]" type="checkbox" value="board" id="board">
+                                <label class="form-check-label" for="board">
+                                    board games
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="interests[]" type="checkbox" value="video" id="video">
+                                <label class="form-check-label" for="video">
+                                    video games
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Out-door-->
+            <div class="container">
+                <h5 class="display-5">Out-door Interests</h5>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="form-check">
+                                <input class="form-check-input" name="interests[]" type="checkbox" value="hiking" id="hiking">
+                                <label class="form-check-label" for="hiking">
+                                    hiking
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="interests[]" type="checkbox" value="walking" id="walking">
+                                <label class="form-check-label" for="walking">
+                                    walking
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-check">
+                                <input class="form-check-input" name="interests[]" type="checkbox" value="biking" id="biking">
+                                <label class="form-check-label" for="biking">
+                                    biking
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="interests[]" type="checkbox" value="climbing" id="climbing">
+                                <label class="form-check-label" for="climbing">
+                                    climbing
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-check">
+                                <input class="form-check-input" name="interests[]" type="checkbox" value="swimming" id="swimming">
+                                <label class="form-check-label" for="swimming">
+                                    swimming
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-check">
+                                <input class="form-check-input" name="interests[]" type="checkbox" value="collecting" id="collecting">
+                                <label class="form-check-label" for="collecting">
+                                    collecting
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container w-100 button">
+                <input type="submit" class="btn btn-primary" value="Next >">
+            </div>
+        </form>
     </div>
-</nav>
+</body>
+</html>

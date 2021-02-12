@@ -29,6 +29,7 @@ $f3->route('GET /personal_info', function () {
     echo $view->render('views/personal_info.html');
 });
 
+//profile route
 $f3->route('POST /profile', function () {
     //first name
     if(isset($_POST['fName'])) {
@@ -59,6 +60,7 @@ $f3->route('POST /profile', function () {
     echo $view->render('views/profile.html');
 });
 
+//interests route
 $f3->route('POST /interests', function () {
     //email
     if(isset($_POST['email'])) {
@@ -84,6 +86,7 @@ $f3->route('POST /interests', function () {
     echo $view->render('views/interests.html');
 });
 
+//summary page route
 $f3->route('POST /summary', function () {
     //biography
     if(isset($_POST['interests'])) {

@@ -28,21 +28,23 @@ summary page
             <div class="row">
                 <div class="col-6">
                     <div class="container rounded">
-                        <span class="d-block">Name: {{ @SESSION.fName }} {{ @SESSION.lName }}</span>
-                        <span class="d-block">Gender: {{ ucfirst(@SESSION.gender) }}</span>
-                        <span class="d-block">Age: {{ @SESSION.age }}</span>
-                        <span class="d-block">Phone: {{ @SESSION.number }}</span>
-                        <span class="d-block">State: {{ strtoupper(@SESSION.state) }}</span>
-                        <span class="d-block">Seeking: {{ ucfirst(@SESSION.seeking) }}</span>
-                        <span class="d-block">Interests: {{ @SESSION.interests }}</span>
+                        <span class="d-block container rounded">Name: {{ @SESSION.fName }} {{ @SESSION.lName }}</span>
+                        <span class="d-block container rounded">Gender: {{ ucfirst(@SESSION.gender) }}</span>
+                        <span class="d-block container rounded">Age: {{ @SESSION.age }}</span>
+                        <span class="d-block container rounded">Phone: {{ @SESSION.number }}</span>
+                        <span class="d-block container rounded">State: {{ strtoupper(@SESSION.state) }}</span>
+                        <span class="d-block container rounded">Seeking: {{ ucfirst(@SESSION.seeking) }}</span>
+                        <span class="d-block container rounded">Interests: {{ @SESSION.interests }}</span>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="container">
-                        <img class="img-fluid rounded" id="image" src="images/empty.png" alt="dating image">
-                    </div>
-                    <div class="container">
-                        <p>{{ @SESSION.biography }}</p>
+                    <div class="containerd-flex justify-content-center">
+                        <div class="container">
+                            <img class="img-fluid rounded" src="images/empty.png" alt="dating image">
+                        </div>
+                        <div class="container">
+                            <p>{{ @SESSION.biography }}</p>
+                        </div>
                     </div>
                 </div>
             </div>

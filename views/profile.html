@@ -23,24 +23,24 @@ profile page that gather another personal information of the user
         <a href="{{ @BASE }}" class="navbar-brand">My Dating Website</a>
     </div>
 </nav>
-<div class="container rounded main">
+<div class="container rounded main p-5 pb-5">
     <form class="row" method="post" action="interests">
         <!--Header-->
         <div class="container">
-            <h4 class="display-4">Profile</h4>
+            <h2>Profile</h2>
             <hr>
         </div>
         <div class="col-6">
             <!--Email-->
-            <div class="container">
-                <label class="w-100">Email <br>
-                    <input class="w-100" type="text"
+            <div class="form-group">
+                <label class="w-100"><strong>Email</strong><br>
+                    <input class="w-100 form-control" type="text"
                            name="email"></label>
             </div>
             <!--State-->
-            <div class="container">
-                <label for="state">State</label><br>
-                <select class="form-select w-100" name="state" id="state">
+            <div class="form-group">
+                <label for="state"><strong>State</strong></label><br>
+                <select class="custom-select w-100 mb-3" name="state" id="state">
                     <option value="washington">Washington</option>
                     <option value="oregon">Oregon</option>
                     <option value="idaho">Idaho</option>
@@ -48,8 +48,8 @@ profile page that gather another personal information of the user
                 </select>
             </div>
             <!--Seeking-->
-            <div class="container">
-                <label class="w-100">Seeking <br>
+            <div class="form-group">
+                <label class="w-100"><strong>Seeking</strong> <br>
                     <div class="form-check d-inline">
                         <input class="form-check-input" type="radio" name="seeking" value="male">
                         <label class="form-check-label">
@@ -67,13 +67,13 @@ profile page that gather another personal information of the user
         </div>
         <div class="col-6">
             <!--Biography text area-->
-            <div class="container">
-                <label>Biography</label>
+            <div class="form-group">
+                <label><strong>Biography</strong></label>
                 <br>
-                <textarea name="biography" cols="35" rows="10"></textarea>
+                <textarea class="form-control rounded" name="biography" cols="50" rows="5"></textarea>
             </div>
             <div class="container">
-                <input type="submit" class="btn btn-primary" value="Next >">
+                <input type="submit" class="btn btn-primary float-right" value="Next >">
             </div>
         </div>
     </form>

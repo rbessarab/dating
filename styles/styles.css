@@ -6,3 +6,8 @@
 #image {
     height: 40rem;
 }
+
+span {
+    border: 1px solid grey;
+    padding: 0.7rem;
+}

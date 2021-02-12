@@ -23,36 +23,36 @@ Personal_info page that gather personal information of the user
             <a href="{{ @BASE }}" class="navbar-brand">My Dating Website</a>
         </div>
     </nav>
-    <div class="container rounded main">
+    <div class="container rounded main p-5 pb-5">
         <form class="row" method="post" action="profile">
             <!--Header-->
             <div class="container">
-                <h4 class="display-4">Personal Information</h4>
+                <h2>Personal Information</h2>
                 <hr>
             </div>
             <div class="col-8">
                 <!--First Name-->
-                <div class="container">
-                    <label class="w-100">First Name <br>
-                        <input class="w-100" type="text"
+                <div class="form-group">
+                    <label class="w-100"><strong>First Name</strong><br>
+                        <input class="w-100 form-control" type="text"
                                name="fName"></label>
                 </div>
                 <!--Last Name-->
-                <div class="container">
-                    <label class="w-100">Last Name <br>
-                        <input class="w-100" type="text"
+                <div class="form-group">
+                    <label class="w-100"><strong>Last Name</strong> <br>
+                        <input class="w-100 form-control" type="text"
                                name="lName"></label>
                 </div>
                 <!--Age-->
-                <div class="container">
-                    <label class="w-100">Age <br>
-                        <input class="w-100" type="text"
+                <div class="form-group">
+                    <label class="w-100"><strong>Age</strong>  <br>
+                        <input class="w-100 form-control" type="text"
                                name="age">
                     </label>
                 </div>
                 <!--Gender-->
-                <div class="container">
-                    <label class="w-100">Gender <br>
+                <div class="form-group">
+                    <label class="w-100"><strong>Gender</strong>  <br>
                     <div class="form-check d-inline">
                         <input class="form-check-input" type="radio" name="gender" value="male">
                         <label class="form-check-label">
@@ -68,20 +68,20 @@ Personal_info page that gather personal information of the user
                     </label>
                 </div>
                 <!--Phone Number-->
-                <div class="container">
-                    <label class="w-100">Phone Number <br>
-                        <input class="w-100" type="text"
+                <div class="form-group">
+                    <label class="w-100"><strong>Phone Number</strong> <br>
+                        <input class="w-100 form-control" type="text"
                                name="number">
                     </label>
                 </div>
             </div>
             <div class="col-4">
-                <div class="container">
-                    <p>All information entered is protected by our privacy policy.
+                <div class="container rounded">
+                    <p><strong>Note:</strong> All information entered is protected by our <a href="#">privacy policy</a>.
                     Profile information can only be viewed by others with your permission.</p>
                 </div>
                 <div class="container">
-                    <input type="submit" class="btn btn-primary" value="Next >">
+                    <input type="submit" class="btn btn-primary float-right" value="Next >">
                 </div>
             </div>
         </form>

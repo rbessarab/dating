@@ -24,7 +24,7 @@ Personal_info page that gather personal information of the user
         </div>
     </nav>
     <div class="container rounded main p-5 pb-5">
-        <form class="row" method="post" action="profile">
+        <form class="row" method="post" action="#">
             <!--Header-->
             <div class="container">
                 <h2>Personal Information</h2>
@@ -36,6 +36,9 @@ Personal_info page that gather personal information of the user
                     <label class="w-100"><strong>First Name</strong><br>
                         <input class="w-100 form-control" type="text"
                                name="fName"></label>
+                    <check if="{{ isset(@errors['fName']) }}">
+                        {{ @errors['fName'] }}
+                    </check>
                 </div>
                 <!--Last Name-->
                 <div class="form-group">

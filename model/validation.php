@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is for validation purpose. Contains function for validation.
+ * This file is for validation purpose. Contains functions for validation.
  * model/validation.php
  */
 
@@ -16,10 +16,19 @@ function validAge($age) {
 
 function validPhone($phone) {
     //phone number should not be empty and can contain only numbers
-    return !empty($phone) && is_numeric($phone);
+    return !empty($phone) && filter_var($phone,FILTER_SANITIZE_NUMBER_INT);
 }
 
 function validEmail($email) {
     //using filter_var function we can check for valid email
     return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+
+function validInDoor($interest) {
+    //finding if the interest is in array of interests
+    return in_array($interest, getInDoor());
+}
+
+function validOutDoor($interest) {
+    return in_array($interest, getOutDoor());
 }

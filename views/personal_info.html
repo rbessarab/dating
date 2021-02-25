@@ -45,6 +45,9 @@ Personal_info page that gather personal information of the user
                     <label class="w-100"><strong>Last Name</strong> <br>
                         <input class="w-100 form-control" type="text"
                                name="lName"></label>
+                    <check if="{{ isset(@errors['lName']) }}">
+                        {{ @errors['lName'] }}
+                    </check>
                 </div>
                 <!--Age-->
                 <div class="form-group">

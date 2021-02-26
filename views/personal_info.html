@@ -35,7 +35,7 @@ Personal_info page that gather personal information of the user
                 <div class="form-group">
                     <label class="w-100"><strong>First Name</strong><br>
                         <input class="w-100 form-control" type="text"
-                               name="fName"></label>
+                               name="fName" value="{{ @_POST['fName'] }}"></label>
                     <check if="{{ isset(@errors['fName']) }}">
                         {{ @errors['fName'] }}
                     </check>
@@ -44,7 +44,7 @@ Personal_info page that gather personal information of the user
                 <div class="form-group">
                     <label class="w-100"><strong>Last Name</strong> <br>
                         <input class="w-100 form-control" type="text"
-                               name="lName"></label>
+                               name="lName" value="{{ @_POST['lName'] }}"></label>
                     <check if="{{ isset(@errors['lName']) }}">
                         {{ @errors['lName'] }}
                     </check>
@@ -53,7 +53,7 @@ Personal_info page that gather personal information of the user
                 <div class="form-group">
                     <label class="w-100"><strong>Age</strong>  <br>
                         <input class="w-100 form-control" type="text"
-                               name="age">
+                               name="age" value="{{ @_POST['age'] }}">
                     </label>
                     <check if="{{ isset(@errors['age']) }}">
                         {{ @errors['age'] }}
@@ -79,7 +79,7 @@ Personal_info page that gather personal information of the user
                 <div class="form-group">
                     <label class="w-100"><strong>Phone Number</strong> <br>
                         <input class="w-100 form-control" type="text"
-                               name="number">
+                               name="number" value="{{ @_POST['number'] }}">
                     </label>
                     <check if="{{ isset(@errors['number']) }}">
                         {{ @errors['number'] }}

@@ -36,7 +36,7 @@ profile page that gather another personal information of the user
             <div class="form-group">
                 <label class="w-100"><strong>Email</strong><br>
                     <input class="w-100 form-control" type="text"
-                           name="email"></label>
+                           name="email" value="{{ @_POST['email'] }}"></label>
                 <check if="{{ isset(@errors['email']) }}">
                     {{ @errors['email'] }}
                 </check>

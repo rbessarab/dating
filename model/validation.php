@@ -4,31 +4,50 @@
  * model/validation.php
  */
 
-function validName($name) {
+function validName($name)
+{
     //name should not be empty and should contain only letters
     return !empty($name) && ctype_alpha($name);
 }
 
-function validAge($age) {
+function validAge($age)
+{
     //age should be between 18 and 118
     return $age >= 18 && $age <= 118;
 }
 
-function validPhone($phone) {
+function validPhone($phone)
+{
     //phone number should not be empty and can contain only numbers
     return !empty($phone) && filter_var($phone,FILTER_SANITIZE_NUMBER_INT);
 }
 
-function validEmail($email) {
+function validEmail($email)
+{
     //using filter_var function we can check for valid email
-    return filter_var($email, FILTER_VALIDATE_EMAIL);
+    return !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
-function validInDoor($interest) {
+function validInDoor($interests)
+{
     //finding if the interest is in array of interests
-    return in_array($interest, getInDoor());
+    $validInterests = getInDoor();
+    foreach($interests as $interest) {
+        if(!in_array($interest, $validInterests)) {
+            return false;
+        }
+    }
+    return true;
 }
 
-function validOutDoor($interest) {
-    return in_array($interest, getOutDoor());
+function validOutDoor($interests)
+{
+    //finding if the interest is in array of interests
+    $validInterests = getOutDoor();
+    foreach($interests as $interest) {
+        if(!in_array($interest, $validInterests)) {
+            return false;
+        }
+    }
+    return true;
 }

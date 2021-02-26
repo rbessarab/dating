@@ -25,7 +25,7 @@ profile page that gather another personal information of the user
     </div>
 </nav>
 <div class="container rounded main p-5 pb-5">
-    <form class="row" method="post" action="interests">
+    <form class="row" method="post" action="#">
         <!--Header-->
         <div class="container">
             <h2>Profile</h2>
@@ -37,6 +37,9 @@ profile page that gather another personal information of the user
                 <label class="w-100"><strong>Email</strong><br>
                     <input class="w-100 form-control" type="text"
                            name="email"></label>
+                <check if="{{ isset(@errors['email']) }}">
+                    {{ @errors['email'] }}
+                </check>
             </div>
             <!--State-->
             <div class="form-group">

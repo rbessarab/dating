@@ -55,6 +55,9 @@ Personal_info page that gather personal information of the user
                         <input class="w-100 form-control" type="text"
                                name="age">
                     </label>
+                    <check if="{{ isset(@errors['age']) }}">
+                        {{ @errors['age'] }}
+                    </check>
                 </div>
                 <!--Gender-->
                 <div class="form-group">
@@ -78,6 +81,9 @@ Personal_info page that gather personal information of the user
                         <input class="w-100 form-control" type="text"
                                name="number">
                     </label>
+                    <check if="{{ isset(@errors['number']) }}">
+                        {{ @errors['number'] }}
+                    </check>
                 </div>
             </div>
             <div class="col-4">

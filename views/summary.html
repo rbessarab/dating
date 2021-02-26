@@ -35,7 +35,7 @@ summary page
                         <span class="d-block container rounded">Phone: {{ @SESSION.number }}</span>
                         <span class="d-block container rounded">State: {{ strtoupper(@SESSION.state) }}</span>
                         <span class="d-block container rounded">Seeking: {{ ucfirst(@SESSION.seeking) }}</span>
-                        <span class="d-block container rounded">Interests: {{ @SESSION.interests }}</span>
+                        <span class="d-block container rounded">Interests: {{ @SESSION.inInterests }}, {{ @SESSION.outInterests }}</span>
                     </div>
                 </div>
                 <div class="col-6">

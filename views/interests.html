@@ -25,7 +25,7 @@ profile page that gather interests
         </div>
     </nav>
     <div class="container rounded main p-5 pb-5">
-        <form class="row" method="post" action="summary">
+        <form class="row" method="post" action="#">
             <!--Header-->
             <div class="container">
                 <h2>Interests</h2>
@@ -38,13 +38,13 @@ profile page that gather interests
                     <div class="row">
                         <div class="col-3">
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" name="interests[]" type="checkbox" value="tv" id="tv">
+                                <input class="custom-control-input" name="inInterests[]" type="checkbox" value="tv" id="tv">
                                 <label class="custom-control-label" for="tv">
                                     tv
                                 </label>
                             </div>
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" name="interests[]" type="checkbox" value="puzzles" id="puzzles">
+                                <input class="custom-control-input" name="inInterests[]" type="checkbox" value="puzzles" id="puzzles">
                                 <label class="custom-control-label" for="puzzles">
                                     puzzles
                                 </label>
@@ -52,13 +52,13 @@ profile page that gather interests
                         </div>
                         <div class="col-3">
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" name="interests[]" type="checkbox" value="movies" id="movies">
+                                <input class="custom-control-input" name="inInterests[]" type="checkbox" value="movies" id="movies">
                                 <label class="custom-control-label" for="movies">
                                     movies
                                 </label>
                             </div>
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" name="interests[]" type="checkbox" value="reading" id="reading">
+                                <input class="custom-control-input" name="inInterests[]" type="checkbox" value="reading" id="reading">
                                 <label class="custom-control-label" for="reading">
                                     reading
                                 </label>
@@ -66,13 +66,13 @@ profile page that gather interests
                         </div>
                         <div class="col-3">
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" name="interests[]" type="checkbox" value="cooking" id="cooking">
+                                <input class="custom-control-input" name="inInterests[]" type="checkbox" value="cooking" id="cooking">
                                 <label class="custom-control-label" for="cooking">
                                     cooking
                                 </label>
                             </div>
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" name="interests[]" type="checkbox" value="cards" id="cards">
+                                <input class="custom-control-input" name="inInterests[]" type="checkbox" value="cards" id="cards">
                                 <label class="custom-control-label" for="cards">
                                     playing cards
                                 </label>
@@ -80,13 +80,13 @@ profile page that gather interests
                         </div>
                         <div class="col-3">
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" name="interests[]" type="checkbox" value="board" id="board">
+                                <input class="custom-control-input" name="inInterests[]" type="checkbox" value="board" id="board">
                                 <label class="custom-control-label" for="board">
                                     board games
                                 </label>
                             </div>
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" name="interests[]" type="checkbox" value="video" id="video">
+                                <input class="custom-control-input" name="inInterests[]" type="checkbox" value="video" id="video">
                                 <label class="custom-control-label" for="video">
                                     video games
                                 </label>
@@ -147,6 +147,9 @@ profile page that gather interests
                     </div>
                 </div>
             </div>
+            <check if="{{ isset(@errors['interests']) }}">
+                {{ @errors['interests'] }}
+            </check>
             <div class="container w-100 button">
                 <input type="submit" class="btn btn-primary float-right mt-5 mb-3" value="Next >">
             </div>

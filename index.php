@@ -12,8 +12,8 @@ error_reporting(E_ALL);
 session_start();
 
 require_once('vendor/autoload.php');
-require_once('model/validation.php');
-require_once('model/data_layer.php');
+require('model/validation.php');
+require('model/data_layer.php');
 
 //create an instance of the base class
 $f3 = Base::instance();
@@ -33,6 +33,11 @@ $f3->route('GET|POST /personal_info', function ($f3) {
         $lName = $_POST['lName'];
         $age = $_POST['age'];
         $number = $_POST['number'];
+
+        //gender is optional
+        if(isset($_POST['gender'])) {
+            $_SESSION['gender'] = $_POST['gender'];
+        }
 
         //if the data is valid -> store to the session array
         //first name
@@ -78,31 +83,70 @@ $f3->route('GET|POST /personal_info', function ($f3) {
 });
 
 //profile route
-$f3->route('GET|POST /profile', function () {
+$f3->route('GET|POST /profile', function ($f3) {
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $email = $_POST['email'];
+
+        //Required field
+        //email
+        if(validEmail($email)) {
+            $_SESSION['email'] = $email;
+        }
+        else {
+            $f3->set('errors["email"]', "Email is required");
+        }
+
+        //Optional Fields
+        //state
+        if(isset($_POST['state'])) {
+            $_SESSION['state'] = $_POST['state'];
+        }
+
+        //seeking
+        if(isset($_POST['seeking'])) {
+            $_SESSION['seeking'] = $_POST['seeking'];
+        }
+
+        //biography
+        if(isset($_POST['biography'])) {
+            $_SESSION['biography'] = $_POST['biography'];
+        }
+
+        if(empty($f3->get('errors'))) {
+            $f3->reroute('/interests');
+        }
+    }
+
     $view = new Template();
     echo $view->render('views/profile.html');
 });
 
 //interests route
-$f3->route('POST /interests', function () {
-    //email
-    if(isset($_POST['email'])) {
-        $_SESSION['email'] = $_POST['email'];
-    }
+$f3->route('GET|POST /interests', function ($f3) {
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $inInterests = $_POST['inInterests'];
+        $outInterests = $_POST['interests'];
 
-    //state
-    if(isset($_POST['state'])) {
-        $_SESSION['state'] = $_POST['state'];
-    }
+        //if interests were given
+        if(isset($inInterests)) {
+            if (validInDoor($inInterests)) {
+                $_SESSION['inInterests'] = implode(', ', $inInterests);
+            } else {
+                $f3->set('errors["interests"]', "Spoofing is not allowed here");
+            }
+        }
 
-    //seeking
-    if(isset($_POST['seeking'])) {
-        $_SESSION['seeking'] = $_POST['seeking'];
-    }
+        if(isset($outInterests)) {
+            if (validOutDoor($outInterests)) {
+                $_SESSION['outInterests'] = implode(', ', $outInterests);
+            } else {
+                $f3->set('errors["interests"]', "Do not spoof!");
+            }
+        }
 
-    //biography
-    if(isset($_POST['biography'])) {
-        $_SESSION['biography'] = $_POST['biography'];
+        if(empty($f3->get('errors'))) {
+            $f3->reroute('/summary');
+        }
     }
 
     $view = new Template();
@@ -110,14 +154,10 @@ $f3->route('POST /interests', function () {
 });
 
 //summary page route
-$f3->route('POST /summary', function () {
-    //biography
-    if(isset($_POST['interests'])) {
-        $_SESSION['interests'] = implode(', ', $_POST['interests']);
-    }
-
+$f3->route('GET /summary', function () {
     $view = new Template();
     echo $view->render('views/summary.html');
+    session_destroy();
 });
 
 $f3->run();

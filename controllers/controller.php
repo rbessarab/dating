@@ -18,6 +18,8 @@ class Controller
     function personal_info()
     {
         global $validator;
+        global $basicMember;
+        global $premiumMember;
 
         //if the form has been submitted
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -25,16 +27,24 @@ class Controller
             $lName = $_POST['lName'];
             $age = $_POST['age'];
             $number = $_POST['number'];
+            $isPremium = $_POST['premium'];
+
+            if(!isset($isPremium)) {
+                $member = $basicMember;
+            }
+            else {
+                $member = $premiumMember;
+            }
 
             //gender is optional
             if(isset($_POST['gender'])) {
-                $_SESSION['gender'] = $_POST['gender'];
+                $member->setGender($_POST['gender']);
             }
 
             //if the data is valid -> store to the session array
             //first name
             if($validator->validName($fName)) {
-                $_SESSION['fName'] = $fName;
+                $member->setFname($fName);
             }
             else {
                 $this->_f3->set('errors["fName"]', "First name is required");
@@ -42,7 +52,7 @@ class Controller
 
             //last name
             if($validator->validName($lName)) {
-                $_SESSION['lName'] = $lName;
+                $member->setLname($lName);
             }
             else {
                 $this->_f3->set('errors["lName"]', "Last name is required");
@@ -50,7 +60,7 @@ class Controller
 
             //age
             if($validator->validAge($age)) {
-                $_SESSION['age'] = $age;
+                $member->setAge($age);
             }
             else {
                 $this->_f3->set('errors["age"]', "Appropriate age is required (18+)");
@@ -58,7 +68,7 @@ class Controller
 
             //phone number
             if($validator->validPhone($number)) {
-                $_SESSION['number'] = $number;
+                $member->setPhone($number);
             }
             else {
                 $this->_f3->set('errors["number"]', "Phone number is required");
@@ -66,6 +76,7 @@ class Controller
 
             //if no errors -> go to the next page
             if(empty($this->_f3->get('errors'))) {
+                $_SESSION['member'] = $member;
                 $this->_f3->reroute('/profile');
             }
         }
@@ -77,6 +88,8 @@ class Controller
     function profile()
     {
         global $validator;
+        global $basicMember;
+        global $premiumMember;
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $email = $_POST['email'];
@@ -84,7 +97,7 @@ class Controller
             //Required field
             //email
             if($validator->validEmail($email)) {
-                $_SESSION['email'] = $email;
+                $_SESSION['member']->setEmail($email);
             }
             else {
                 $this->_f3->set('errors["email"]', "Email is required");
@@ -93,21 +106,26 @@ class Controller
             //Optional Fields
             //state
             if(isset($_POST['state'])) {
-                $_SESSION['state'] = $_POST['state'];
+                $_SESSION['member']->setState($_POST['state']);
             }
 
             //seeking
             if(isset($_POST['seeking'])) {
-                $_SESSION['seeking'] = $_POST['seeking'];
+                $_SESSION['member']->setSeeking($_POST['seeking']);
             }
 
             //biography
             if(isset($_POST['biography'])) {
-                $_SESSION['biography'] = $_POST['biography'];
+                $_SESSION['member']->setBio($_POST['biography']);
             }
 
             if(empty($this->_f3->get('errors'))) {
-                $this->_f3->reroute('/interests');
+                if($_SESSION['member'] instanceof $premiumMember) {
+                    $this->_f3->reroute('/interests');
+                }
+                else {
+                    $this->_f3->reroute('/summary');
+                }
             }
         }
 
@@ -126,7 +144,7 @@ class Controller
             //if interests were given
             if(isset($inInterests)) {
                 if ($validator->validInDoor($inInterests)) {
-                    $_SESSION['inInterests'] = implode(', ', $inInterests);
+                    $_SESSION['member']->setInDoorInterests(implode(', ', $inInterests));
                 } else {
                     $this->_f3->set('errors["interests"]', "Do not spoof!");
                 }
@@ -134,7 +152,7 @@ class Controller
 
             if(isset($outInterests)) {
                 if ($validator->validOutDoor($outInterests)) {
-                    $_SESSION['outInterests'] = implode(', ', $outInterests);
+                    $_SESSION['member']->setOutDoorInterests(implode(', ', $inInterests));
                 } else {
                     $this->_f3->set('errors["interests"]', "Do not spoof!");
                 }

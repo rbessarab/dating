@@ -17,6 +17,8 @@ $f3 = Base::instance();
 $f3->set('DEBUG', 3);
 $dataLayer = new DataLayer();
 $validator = new Validator($dataLayer);
+$basicMember = new Member();
+$premiumMember = new PremiumMember();
 
 $controller = new Controller($f3);
 

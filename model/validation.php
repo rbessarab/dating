@@ -6,18 +6,6 @@
 
 class Validator
 {
-    private $_dataLayer;
-
-    /**
-     * Validator constructor.
-     * @param $_dataLayer
-     */
-    public function __construct($_dataLayer)
-    {
-        $this->_dataLayer = $_dataLayer;
-    }
-
-
     /**
      * Takes name parameter and checks if it's not empty and contains only letters
      * @param $name string
@@ -69,8 +57,10 @@ class Validator
      */
     function validInDoor($interests)
     {
+        global $dataLayer;
+
         //finding if the interest is in array of interests
-        $validInterests = $this->_dataLayer->getInDoor();
+        $validInterests = $dataLayer->getInDoor();
         foreach($interests as $interest) {
             if(!in_array($interest, $validInterests)) {
                 return false;
@@ -86,8 +76,10 @@ class Validator
      */
     function validOutDoor($interests)
     {
+        global $dataLayer;
+
         //finding if the interest is in array of interests
-        $validInterests = $this->_dataLayer->getOutDoor();
+        $validInterests = $dataLayer->getOutDoor();
         foreach($interests as $interest) {
             if(!in_array($interest, $validInterests)) {
                 return false;

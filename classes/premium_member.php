@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class PremiumMember represents premium member account
+ */
 class PremiumMember extends Member
 {
     private $_inDoorInterests;
@@ -8,7 +11,7 @@ class PremiumMember extends Member
     /**
      * @return array
      */
-    public function getInDoorInterests()
+    function getInDoorInterests()
     {
         return $this->_inDoorInterests;
     }
@@ -16,7 +19,7 @@ class PremiumMember extends Member
     /**
      * @param array $inDoorInterests
      */
-    public function setInDoorInterests($inDoorInterests)
+    function setInDoorInterests($inDoorInterests)
     {
         $this->_inDoorInterests = $inDoorInterests;
     }
@@ -24,7 +27,7 @@ class PremiumMember extends Member
     /**
      * @return array
      */
-    public function getOutDoorInterests()
+    function getOutDoorInterests()
     {
         return $this->_outDoorInterests;
     }
@@ -32,7 +35,7 @@ class PremiumMember extends Member
     /**
      * @param array $outDoorInterests
      */
-    public function setOutDoorInterests($outDoorInterests)
+    function setOutDoorInterests($outDoorInterests)
     {
         $this->_outDoorInterests = $outDoorInterests;
     }

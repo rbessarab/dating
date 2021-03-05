@@ -29,13 +29,13 @@ summary page
             <div class="row">
                 <div class="col-6">
                     <div class="container rounded">
-                        <span class="d-block container rounded">Name: {{ @SESSION.fName }} {{ @SESSION.lName }}</span>
-                        <span class="d-block container rounded">Gender: {{ ucfirst(@SESSION.gender) }}</span>
-                        <span class="d-block container rounded">Age: {{ @SESSION.age }}</span>
-                        <span class="d-block container rounded">Phone: {{ @SESSION.number }}</span>
-                        <span class="d-block container rounded">State: {{ strtoupper(@SESSION.state) }}</span>
-                        <span class="d-block container rounded">Seeking: {{ ucfirst(@SESSION.seeking) }}</span>
-                        <span class="d-block container rounded">Interests: {{ @SESSION.inInterests }}, {{ @SESSION.outInterests }}</span>
+                        <span class="d-block container rounded">Name: {{ @SESSION.member->getFname() }} {{ @SESSION.member->getLname() }}</span>
+                        <span class="d-block container rounded">Gender: {{ ucfirst(@SESSION.member->getGender()) }}</span>
+                        <span class="d-block container rounded">Age: {{ @SESSION.member->getAge() }}</span>
+                        <span class="d-block container rounded">Phone: {{ @SESSION.member->getPhone() }}</span>
+                        <span class="d-block container rounded">State: {{ strtoupper(@SESSION.member->getState()) }}</span>
+                        <span class="d-block container rounded">Seeking: {{ ucfirst(@SESSION.member->getSeeking()) }}</span>
+                        <span class="d-block container rounded">Interests: {{ @SESSION.member->getInDoorInterests() }}, {{ @SESSION.member->getOutDoorInterests() }}</span>
                     </div>
                 </div>
                 <div class="col-6">
@@ -44,7 +44,7 @@ summary page
                             <img class="img-fluid rounded" src="images/empty.png" alt="dating image">
                         </div>
                         <div class="container">
-                            <p>{{ @SESSION.biography }}</p>
+                            <p>{{ @SESSION.member->getBio() }}</p>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class Member represents a general member of the dating website
+ */
 class Member
 {
     private $_fname;

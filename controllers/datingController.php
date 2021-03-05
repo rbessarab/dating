@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class DatingController represents a controller for our webapp
+ */
 class DatingController
 {
     private $_f3;

@@ -15,41 +15,42 @@ session_start();
 //create an instance of the base class
 $f3 = Base::instance();
 $f3->set('DEBUG', 3);
-$dataLayer = new DataLayer();
-$validator = new Validator($dataLayer);
+
 $basicMember = new Member();
 $premiumMember = new PremiumMember();
+$dataLayer = new DataLayer();
+$validator = new Validator();
 
-$controller = new Controller($f3);
+$datingController = new DatingController($f3);
 
 //define a default route(home page)
 $f3->route('GET /', function () {
-    global $controller;
-    $controller->home();
+    global $datingController;
+    $datingController->home();
 });
 
 //personal info route
-$f3->route('GET|POST /personal_info', function ($f3) {
-    global $controller;
-    $controller->personal_info();
+$f3->route('GET|POST /personal_info', function () {
+    global $datingController;
+    $datingController->personal_info();
 });
 
 //profile route
-$f3->route('GET|POST /profile', function ($f3) {
-    global $controller;
-    $controller->profile();
+$f3->route('GET|POST /profile', function () {
+    global $datingController;
+    $datingController->profile();
 });
 
 //interests route
-$f3->route('GET|POST /interests', function ($f3) {
-    global $controller;
-    $controller->interests();
+$f3->route('GET|POST /interests', function () {
+    global $datingController;
+    $datingController->interests();
 });
 
 //summary page route
 $f3->route('GET /summary', function () {
-    global $controller;
-    $controller->summary();
+    global $datingController;
+    $datingController->summary();
 });
 
 $f3->run();

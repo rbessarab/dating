@@ -132,7 +132,7 @@ $f3->route('GET|POST /interests', function ($f3) {
             if (validInDoor($inInterests)) {
                 $_SESSION['inInterests'] = implode(', ', $inInterests);
             } else {
-                $f3->set('errors["interests"]', "Spoofing is not allowed here");
+                $f3->set('errors["interests"]', "Do not spoof!");
             }
         }
 

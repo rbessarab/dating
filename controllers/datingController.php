@@ -21,8 +21,8 @@ class DatingController
     function personal_info()
     {
         global $validator;
-        global $basicMember;
         global $premiumMember;
+        global $basicMember;
 
         //if the form has been submitted
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -91,7 +91,6 @@ class DatingController
     function profile()
     {
         global $validator;
-        global $basicMember;
         global $premiumMember;
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -123,7 +122,7 @@ class DatingController
             }
 
             if(empty($this->_f3->get('errors'))) {
-                if($_SESSION['member'] instanceof $premiumMember) {
+                if($_SESSION['member'] == $premiumMember) {
                     $this->_f3->reroute('/interests');
                 }
                 else {

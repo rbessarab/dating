@@ -15,7 +15,10 @@ class Controller
         echo $view->render('views/home.html');
     }
 
-    function personal_info() {
+    function personal_info()
+    {
+        global $validator;
+
         //if the form has been submitted
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $fName = $_POST['fName'];
@@ -30,7 +33,7 @@ class Controller
 
             //if the data is valid -> store to the session array
             //first name
-            if(validName($fName)) {
+            if($validator->validName($fName)) {
                 $_SESSION['fName'] = $fName;
             }
             else {
@@ -38,7 +41,7 @@ class Controller
             }
 
             //last name
-            if(validName($lName)) {
+            if($validator->validName($lName)) {
                 $_SESSION['lName'] = $lName;
             }
             else {
@@ -46,7 +49,7 @@ class Controller
             }
 
             //age
-            if(validAge($age)) {
+            if($validator->validAge($age)) {
                 $_SESSION['age'] = $age;
             }
             else {
@@ -54,7 +57,7 @@ class Controller
             }
 
             //phone number
-            if(validPhone($number)) {
+            if($validator->validPhone($number)) {
                 $_SESSION['number'] = $number;
             }
             else {
@@ -73,12 +76,14 @@ class Controller
 
     function profile()
     {
+        global $validator;
+
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $email = $_POST['email'];
 
             //Required field
             //email
-            if(validEmail($email)) {
+            if($validator->validEmail($email)) {
                 $_SESSION['email'] = $email;
             }
             else {
@@ -112,13 +117,15 @@ class Controller
 
     function interests()
     {
+        global $validator;
+
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $inInterests = $_POST['inInterests'];
             $outInterests = $_POST['interests'];
 
             //if interests were given
             if(isset($inInterests)) {
-                if (validInDoor($inInterests)) {
+                if ($validator->validInDoor($inInterests)) {
                     $_SESSION['inInterests'] = implode(', ', $inInterests);
                 } else {
                     $this->_f3->set('errors["interests"]', "Do not spoof!");
@@ -126,7 +133,7 @@ class Controller
             }
 
             if(isset($outInterests)) {
-                if (validOutDoor($outInterests)) {
+                if ($validator->validOutDoor($outInterests)) {
                     $_SESSION['outInterests'] = implode(', ', $outInterests);
                 } else {
                     $this->_f3->set('errors["interests"]', "Do not spoof!");

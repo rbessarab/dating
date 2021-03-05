@@ -70,7 +70,7 @@ class Validator
     function validInDoor($interests)
     {
         //finding if the interest is in array of interests
-        $validInterests = getInDoor();
+        $validInterests = $this->_dataLayer->getInDoor();
         foreach($interests as $interest) {
             if(!in_array($interest, $validInterests)) {
                 return false;
@@ -87,7 +87,7 @@ class Validator
     function validOutDoor($interests)
     {
         //finding if the interest is in array of interests
-        $validInterests = getOutDoor();
+        $validInterests = $this->_dataLayer->getOutDoor();
         foreach($interests as $interest) {
             if(!in_array($interest, $validInterests)) {
                 return false;

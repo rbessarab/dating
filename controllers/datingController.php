@@ -21,8 +21,6 @@ class DatingController
     function personal_info()
     {
         global $validator;
-        global $premiumMember;
-        global $basicMember;
 
         //if the form has been submitted
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -33,21 +31,21 @@ class DatingController
             $isPremium = $_POST['premium'];
 
             if(!isset($isPremium)) {
-                $member = $basicMember;
+                $_SESSION['member'] = new Member();
             }
             else {
-                $member = $premiumMember;
+                $_SESSION['member'] = new PremiumMember();
             }
 
             //gender is optional
             if(isset($_POST['gender'])) {
-                $member->setGender($_POST['gender']);
+                $_SESSION['member']->setGender($_POST['gender']);
             }
 
             //if the data is valid -> store to the session array
             //first name
             if($validator->validName($fName)) {
-                $member->setFname($fName);
+                $_SESSION['member']->setFname($fName);
             }
             else {
                 $this->_f3->set('errors["fName"]', "First name is required");
@@ -55,7 +53,7 @@ class DatingController
 
             //last name
             if($validator->validName($lName)) {
-                $member->setLname($lName);
+                $_SESSION['member']->setLname($lName);
             }
             else {
                 $this->_f3->set('errors["lName"]', "Last name is required");
@@ -63,7 +61,7 @@ class DatingController
 
             //age
             if($validator->validAge($age)) {
-                $member->setAge($age);
+                $_SESSION['member']->setAge($age);
             }
             else {
                 $this->_f3->set('errors["age"]', "Appropriate age is required (18+)");
@@ -71,7 +69,7 @@ class DatingController
 
             //phone number
             if($validator->validPhone($number)) {
-                $member->setPhone($number);
+                $_SESSION['member']->setPhone($number);
             }
             else {
                 $this->_f3->set('errors["number"]', "Phone number is required");
@@ -79,7 +77,6 @@ class DatingController
 
             //if no errors -> go to the next page
             if(empty($this->_f3->get('errors'))) {
-                $_SESSION['member'] = $member;
                 $this->_f3->reroute('/profile');
             }
         }
@@ -91,7 +88,6 @@ class DatingController
     function profile()
     {
         global $validator;
-        global $premiumMember;
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $email = $_POST['email'];
@@ -122,7 +118,7 @@ class DatingController
             }
 
             if(empty($this->_f3->get('errors'))) {
-                if($_SESSION['member'] == $premiumMember) {
+                if(is_a($_SESSION['member'], 'PremiumMember')) {
                     $this->_f3->reroute('/interests');
                 }
                 else {
@@ -146,7 +142,7 @@ class DatingController
             //if interests were given
             if(isset($inInterests)) {
                 if ($validator->validInDoor($inInterests)) {
-                    $inInterestsString = implode(', ', $outInterests);
+                    $inInterestsString = implode(', ', $inInterests);
                     $_SESSION['member']->setInDoorInterests($inInterestsString);
                 } else {
                     $this->_f3->set('errors["interests"]', "Do not spoof!");
@@ -155,7 +151,7 @@ class DatingController
 
             if(isset($outInterests)) {
                 if ($validator->validOutDoor($outInterests)) {
-                    $outInterestsString = implode(', ', $inInterests);
+                    $outInterestsString = implode(', ', $outInterests);
                     $_SESSION['member']->setOutDoorInterests($outInterestsString);
                 } else {
                     $this->_f3->set('errors["interests"]', "Do not spoof!");
@@ -175,7 +171,5 @@ class DatingController
     {
         $view = new Template();
         echo $view->render('views/summary.html');
-        session_destroy();
     }
-
 }

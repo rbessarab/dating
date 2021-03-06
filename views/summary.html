@@ -35,7 +35,9 @@ summary page
                         <span class="d-block container rounded">Phone: {{ @SESSION.member->getPhone() }}</span>
                         <span class="d-block container rounded">State: {{ strtoupper(@SESSION.member->getState()) }}</span>
                         <span class="d-block container rounded">Seeking: {{ ucfirst(@SESSION.member->getSeeking()) }}</span>
-                        <span class="d-block container rounded">Interests: {{ @SESSION.member->getInDoorInterests() }}, {{ @SESSION.member->getOutDoorInterests() }}</span>
+                        <check if="{{ is_a(@SESSION.member, 'PremiumMember') }}">
+                            <span class="d-block container rounded">Interests: {{ @SESSION.member->getInDoorInterests() }}, {{ @SESSION.member->getOutDoorInterests() }}</span>
+                        </check>
                     </div>
                 </div>
                 <div class="col-6">

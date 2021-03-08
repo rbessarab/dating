@@ -6,7 +6,7 @@ class DataLayer
      *  @return array
      */
     function getInDoor() {
-        return array("tv", "puzzle", "movies", "reading", "cooking", "playing cards", "board games", "video games");
+        return array("tv", "puzzles", "movies", "reading", "cooking", "playing cards", "board", "video");
     }
 
     /**

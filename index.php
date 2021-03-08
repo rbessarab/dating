@@ -50,6 +50,7 @@ $f3->route('GET|POST /interests', function ($f3) {
 $f3->route('GET /summary', function () {
     global $datingController;
     $datingController->summary();
+    session_destroy();
 });
 
 $f3->run();

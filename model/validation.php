@@ -61,6 +61,8 @@ class Validator
 
         //finding if the interest is in array of interests
         $validInterests = $dataLayer->getInDoor();
+        var_dump($interests);
+        var_dump($validInterests);
         foreach($interests as $interest) {
             if(!in_array($interest, $validInterests)) {
                 return false;

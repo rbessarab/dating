@@ -9,7 +9,7 @@ class PremiumMember extends Member
     private $_outDoorInterests;
 
     /**
-     * @return array
+     * @return String
      */
     function getInDoorInterests()
     {
@@ -17,7 +17,7 @@ class PremiumMember extends Member
     }
 
     /**
-     * @param array $inDoorInterests
+     * @param String $inDoorInterests
      */
     function setInDoorInterests($inDoorInterests)
     {
@@ -25,7 +25,7 @@ class PremiumMember extends Member
     }
 
     /**
-     * @return array
+     * @return String
      */
     function getOutDoorInterests()
     {
@@ -33,7 +33,7 @@ class PremiumMember extends Member
     }
 
     /**
-     * @param array $outDoorInterests
+     * @param String $outDoorInterests
      */
     function setOutDoorInterests($outDoorInterests)
     {

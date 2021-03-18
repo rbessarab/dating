@@ -9,6 +9,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 require_once('vendor/autoload.php');
+require $_SERVER['DOCUMENT_ROOT'].'/../config.php';
 
 //session start
 session_start();
@@ -17,7 +18,7 @@ session_start();
 $f3 = Base::instance();
 $f3->set('DEBUG', 3);
 
-$dataLayer = new DataLayer();
+$dataLayer = new DataLayer($dbh);
 $validator = new Validator();
 
 $datingController = new DatingController($f3);

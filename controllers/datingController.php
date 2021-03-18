@@ -169,6 +169,9 @@ class DatingController
 
     function summary()
     {
+        global $dataLayer;
+        $dataLayer->insertMember($_SESSION['member']);
+
         $view = new Template();
         echo $view->render('views/summary.html');
     }

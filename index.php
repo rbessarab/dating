@@ -54,4 +54,10 @@ $f3->route('GET /summary', function () {
     session_destroy();
 });
 
+//admin route
+$f3->route('GET /admin', function ($f3) {
+    global $datingController;
+    $datingController->admin();
+});
+
 $f3->run();
